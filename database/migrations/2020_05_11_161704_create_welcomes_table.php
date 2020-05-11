@@ -15,6 +15,8 @@ class CreateWelcomesTable extends Migration
     {
         Schema::create('welcomes', function (Blueprint $table) {
             $table->id();
+            $table->string('titre');
+            $table->string('texte');
             $table->timestamps();
         });
     }
