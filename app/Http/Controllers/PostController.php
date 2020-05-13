@@ -37,6 +37,9 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        if (strlen($request->titre) < 5) {
+            return redirect()->back();    
+       } 
 
         $post = new Post();
 
@@ -82,6 +85,13 @@ class PostController extends Controller
      */
     public function update(Request $request,$id)
     {
+        
+            if (strlen($request->titre) < 5) {
+             return redirect()->back();    
+        } 
+        
+         
+
         $post= Post::find($id);
 
         $post->titre=$request->input('titre');
