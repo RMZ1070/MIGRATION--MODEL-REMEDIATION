@@ -26,7 +26,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+     //
     }
 
     /**
@@ -37,10 +37,6 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'titre' => 'required|max:30|min:4',
-            'texte' => 'required|max:500|min:10',
-            ]);
 
         $post = new Post();
 
@@ -58,10 +54,10 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show($id)
     {
-        $posts = Post::all();
-        return view('post/show',compact('posts'));
+        $post= Post::find($id);
+        return view('post/show',compact('post'));
     }
 
     /**
@@ -70,9 +66,11 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function edit(Post $post)
+    public function edit($id)
     {
-        //
+        $post= Post::find($id);
+
+        return view('post/edit', compact('post'));
     }
 
     /**
@@ -82,14 +80,9 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(Request $request,$id)
     {
-        $request->validate([
-           
-            'titre' => 'required|max:30|min:4',
-            'texte' => 'required|max:500|min:10',
-            ]);
-
+        $post= Post::find($id);
 
         $post->titre=$request->input('titre');
 
@@ -98,7 +91,7 @@ class PostController extends Controller
         $post->save();
      
 
-        return redirect()->route('post.show');
+        return redirect()->route('post');
     }
 
     /**
@@ -107,8 +100,10 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy($id)
     {
-        //
+        $post= Post::find($id);
+        $post->delete();
+        return redirect()->route('post');
     }
 }

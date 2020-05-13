@@ -1,3 +1,5 @@
+@extends('layouts/master')
+@section('content')
 <table class="table table-striped">
         <h1>SHOW POST</h1>
     <thead>
@@ -7,14 +9,11 @@
     </tr>
 </thead>
 <tbody>
-    @foreach ($posts as $item)
     <tr>
-    <td class="text-center"  colspan="">{{$item->titre}}</td>
-    <td class="text-center"  colspan="">{{$item->texte}}</td>
+    <td class="text-center"  colspan="">{{$post->titre}}</td>
+    <td class="text-center"  colspan="">{{$post->texte}}</td>
        
     </tr>
-    @endforeach
-   
     <tbody>
         
 </table>

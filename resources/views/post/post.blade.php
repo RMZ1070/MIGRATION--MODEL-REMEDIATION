@@ -35,10 +35,14 @@
     <tbody>
         @foreach ($posts as $item)
         <tr>
-            <a href="{{route('show',$item->id)}}" class="btn btn-primary scrollto">Show</a>
+            
         <td class="text-center"  colspan="">{{$item->titre}}</td>
         <td class="text-center"  colspan="">{{$item->texte}}</td>
-           
+        <td colspan="">
+        <a href="{{route('show',$item->id)}}" class="btn btn-primary scrollto">Show</a>
+            <a href="{{route('edit',$item->id)}}" class="btn btn-warning scrollto">Edit</a>
+            <a href="{{route('destroy',$item->id)}}" class="btn btn-danger scrollto">Delete</a>
+        </td>
         </tr>
         @endforeach
        
@@ -46,5 +50,4 @@
             
     </table>
 </form>
-</div>
 @endsection
