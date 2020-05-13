@@ -19,5 +19,6 @@ Auth::routes();
 
 Route::get('/post', 'PostController@index')->name('post');
 
+route::get('/show','PostController@show')->name('show');
 Route::post('/postsave', 'PostController@store')->name('postsave');
 Route::get('/home', 'HomeController@index')->name('home');

@@ -35,6 +35,7 @@
     <tbody>
         @foreach ($posts as $item)
         <tr>
+            <a href="{{route('show',$item->id)}}" class="btn btn-primary scrollto">Show</a>
         <td class="text-center"  colspan="">{{$item->titre}}</td>
         <td class="text-center"  colspan="">{{$item->texte}}</td>
            
